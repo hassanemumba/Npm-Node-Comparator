@@ -1,0 +1,110 @@
+.downloads {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.downloads__title {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.download__title {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.download__content {
+    background-color: #ffffff;
+}
+
+.download__header {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    gap: 10px;
+}
+
+.download__winner {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.download__badge {
+    background-color: #e6f7fe;
+    color: #4e6df7;
+    padding: 4px 12px;
+    outline: 2px solid #86c6fa;
+    font-size: 14px;
+}
+
+.download__description {
+    margin: 16px 0;
+    color: #555;
+    background-color: #ffffff;
+}
+
+.download__languages {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    background-color: #ffffff;
+}
+
+.download__language {
+    outline: 1px solid;
+    background-color:   rgb(241, 239, 239);
+    padding: 8px 8px;
+}
+
+
+.download__links {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    background-color: #ffffff;
+}
+
+.download__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+    margin-left: 500px;
+    background-color: #ffffff;
+}
+
+.download__stat {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    gap: 8px;
+}
+
+.download__label {
+    color: #555;
+    background-color: #ffffff;
+}
+
+.download__value {
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.copywrite {
+    position: absolute;
+    left: 50%;
+    margin-top: 50px;
+    transform: translateX(-50%);
+    padding-bottom: 15px;
+    text-align: center;
+    color: grey;
+    width: 100%;
+}
