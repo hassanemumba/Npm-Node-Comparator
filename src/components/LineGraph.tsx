@@ -1,28 +1,21 @@
 import React from "react";
 import { Line } from "@ant-design/plots";
-
 import "./LineGraph.css";
 
-const LineGraph = ({package1, package2}) => {
+const LineGraph = ({ package1, package2 }) => {
+  // Transform package1 and package2 data into the required format
+  const transformData = (packageData, category) => {
+    return packageData.map((item) => ({
+      year: new Date(item.from).getFullYear().toString(), // Extract year from the date
+      value: item.count, // Use the count as the value
+      category: category, // Assign the category (package name)
+    }));
+  };
+
+  // Generate data for the graph
   const data = [
-    { year: "1991", value: 3, category: "react-query" },
-    { year: "1992", value: 4, category: "react-query" },
-    { year: "1993", value: 3.5, category: "react-query" },
-    { year: "1994", value: 5, category: "react-query" },
-    { year: "1995", value: 4.9, category: "react-query" },
-    { year: "1996", value: 6, category: "react-query" },
-    { year: "1997", value: 7, category: "react-query" },
-    { year: "1998", value: 9, category: "react-query" },
-    { year: "1999", value: 13, category: "react-query" },
-    { year: "1991", value: 2, category: "swr" },
-    { year: "1992", value: 3, category: "swr" },
-    { year: "1993", value: 2.8, category: "swr" },
-    { year: "1994", value: 3.5, category: "swr" },
-    { year: "1995", value: 3.2, category: "swr" },
-    { year: "1996", value: 4, category: "swr" },
-    { year: "1997", value: 5, category: "swr" },
-    { year: "1998", value: 6, category: "swr" },
-    { year: "1999", value: 8, category: "swr" },
+    ...transformData(package1, "Package 1"),
+    ...transformData(package2, "Package 2"),
   ];
 
   const config = {
@@ -34,13 +27,13 @@ const LineGraph = ({package1, package2}) => {
     appendPadding: [0, 0, 0, 0],
     smooth: true,
     theme: {
-      background: '#F8F9FA'
+      background: "#F8F9FA",
     },
     xAxis: {
       grid: {
         line: {
           style: {
-            stroke: '#E5E7EB',
+            stroke: "#E5E7EB",
             lineWidth: 1,
             lineDash: [0, 0],
           },
@@ -48,7 +41,7 @@ const LineGraph = ({package1, package2}) => {
       },
       line: {
         style: {
-          stroke: '#E5E7EB',
+          stroke: "#E5E7EB",
           lineWidth: 1,
         },
       },
@@ -58,42 +51,41 @@ const LineGraph = ({package1, package2}) => {
       grid: {
         line: {
           style: {
-            stroke: '#E5E7EB',
+            stroke: "#E5E7EB",
             lineWidth: 1,
           },
         },
       },
       line: {
         style: {
-          stroke: '#E5E7EB',
+          stroke: "#E5E7EB",
           lineWidth: 1,
         },
       },
       tickLine: null,
     },
-    color: ['#10B981', '#3B82F6'],
+    color: ["#10B981", "#3B82F6"], // Colors for the lines
     tooltip: {
       showMarkers: true,
       shared: true,
     },
     point: {
       size: 4,
-      shape: 'circle',
+      shape: "circle",
       style: {
-        fill: 'white',
-        stroke: '#5B8FF9',
+        fill: "white",
+        stroke: "#5B8FF9",
         lineWidth: 2,
       },
     },
     legend: {
-      position: 'top-left',
+      position: "top-left",
       marker: {
-        symbol: 'circle',
-        
+        symbol: "circle",
       },
       itemName: {
         style: {
-          fill: '#666',
+          fill: "#666",
         },
       },
     },
@@ -104,13 +96,13 @@ const LineGraph = ({package1, package2}) => {
       active: {
         style: {
           shadowBlur: 4,
-          shadowColor: 'rgba(0,0,0,0.2)',
+          shadowColor: "rgba(0,0,0,0.2)",
         },
       },
     },
     interactions: [
       {
-        type: 'marker-active',
+        type: "marker-active",
       },
     ],
   };

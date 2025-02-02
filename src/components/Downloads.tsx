@@ -1,9 +1,15 @@
 import React from "react";
 import "./Downloads.css";
 
-export default function Downloads({ package1, package2 }) {
-  const recommendedPackage = package1.score.popularity > package2.score.popularity ? package1 : package2;
-  const betterPercentage = (recommendedPackage.score.popularity / (recommendedPackage === package1 ? package2.score.popularity : package1.score.popularity)) * 100;
+export default function Downloads({ dataset1, dataset2 }) {
+  console.log(dataset1, dataset2);
+  const recommendedPackage = dataset1.health > dataset2.health ? dataset1 : dataset2;
+  const betterPercentage = (recommendedPackage.health / (recommendedPackage === dataset1 ? dataset2.health : dataset1.health)) * 100;
+
+  // Calculate total downloads
+  const totalDownloads = (downloads) => {
+    return downloads.reduce((total, download) => total + download.count, 0);
+  };
 
   return (
     <>
@@ -23,30 +29,30 @@ export default function Downloads({ package1, package2 }) {
             </p>
 
             <div className="download__languages">
-              {recommendedPackage.package.keywords.map((keyword, index) => (
+              {recommendedPackage.keywords.map((keyword, index) => (
                 <span key={index} className="download__language">{keyword}</span>
               ))}
             </div>
             <div className="download__stats">
               <div className="download__stat">
-                <span className="download__label">Downloads</span>
-                <span className="download__value">{recommendedPackage.package.downloads}</span>
+                <span className="download__label">Total Downloads</span>
+                <span className="download__value">{totalDownloads(recommendedPackage.downloads)}</span>
               </div>
               <div className="download__stat">
                 <span className="download__label">Stars</span>
-                <span className="download__value">{recommendedPackage.package.stars}</span>
+                <span className="download__value">{recommendedPackage.stars}</span>
               </div>
               <div className="download__stat">
                 <span className="download__label">Health</span>
-                <span className="download__value">{recommendedPackage.package.health}</span>
+                <span className="download__value">{(recommendedPackage.health * 100).toFixed(2)}%</span>
               </div>
             </div>
 
             <div className="download__links">
               <span>ℹ️</span>
-              <a href={recommendedPackage.package.links.repository} className="download__link">Repository</a>
+              <a href={recommendedPackage.links.repository} className="download__link">Repository</a>
               <span>📄</span>
-              <a href={recommendedPackage.package.links.documentation} className="download__link">Documentation</a>
+              <a href={recommendedPackage.links.documentation} className="download__link">Documentation</a>
             </div>
           </div>
         </div>
